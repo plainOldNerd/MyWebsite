@@ -1,0 +1,23 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<script>
+		window.addEventListener(
+			"load", function load(event){
+	    	window.removeEventListener("load", load, false); 
+	    	
+			var browser = navigator.userAgent;
+			if(/mobi/i.test(browser))
+			{  window.location.replace("mobile/home.html");  }
+			else
+			{  window.location.replace("pc/home.html");  }
+
+			},
+
+			false
+		);
+	</script>
+</head>
+<body>
+</body>
+</html>

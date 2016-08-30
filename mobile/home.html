@@ -1,0 +1,98 @@
+<!DOCTYPE html>
+<html id="htmlMobile">
+<head>
+	<meta charset="utf-8">
+	<link rel="stylesheet" href="../styles.css">
+
+	<title> I hate web programming! </title>
+	
+	<script>
+		var defaultPortrait = true;
+
+		function sizeListener(){
+			var width = window.innerWidth;
+			var height = window.innerHeight;
+    		var ori = window.orientation;
+
+    		if( defaultPortrait )
+    		{
+    			// portrait
+    			if( ori == 0 || ori == 180 )
+    			{
+					document.documentElement.style.backgroundImage = 
+						"url('../Chips.png')";
+					document.documentElement.style.backgroundSize =
+						width.toString() + 'px ' + height.toString() + 'px';
+					document.getElementById('content').style.width = '96%';
+    			}
+    			// landscape
+    			else
+    			{
+					document.documentElement.style.backgroundImage = 
+						"url('../ChipsDrill.png')";
+					document.documentElement.style.backgroundSize =
+						width.toString() + 'px ' + height.toString() + 'px';
+					document.getElementById('content').style.width = '90%';
+    			}
+    		}
+    		//  this is untested, because nobody has a Nexus 10
+    		else
+    		{
+    			// landscape
+    			if( ori == 0 || ori == 180 )
+    			{
+					document.documentElement.style.backgroundImage = 
+						"url('../ChipsDrill.png')";
+					document.documentElement.style.backgroundSize =
+						width.toString() + 'px ' + height.toString() + 'px';
+					document.getElementById('content').style.width = '90%';
+    			}
+    			// portrait
+    			else
+    			{
+					document.documentElement.style.backgroundImage = 
+						"url('../Chips.png')";
+					document.documentElement.style.backgroundSize =
+						width.toString() + 'px ' + height.toString() + 'px';
+					document.getElementById('content').style.width = '96%';
+    			}
+    		}
+		}
+
+		window.addEventListener(
+			"load", function load(event){
+				var d = new Date();
+				var months = ['Jan', 'Feb', 'Mar', 'Apr', 'May', 'Jun',
+					'Jul', 'Aug', 'Sep', 'Oct', 'Nov', 'Dec'];
+				document.title = 'I\'m in your head now - ' + d.getDate() + ' '
+					+ months[d.getMonth()] + ' ' + d.getFullYear();
+					
+	    		var h = screen.height;
+	    		var w = screen.width;
+	    		var o = window.orientation;
+
+	    		//  the Nexus 10's default orientation is landscape
+	    		if(w>h && (o==0 || o==180))
+	    		{  defaultPortrait = false;  }
+
+	    		sizeListener();
+
+	    		window.removeEventListener("load", this, false); 
+			},
+			false
+		);
+
+		window.addEventListener(
+			"orientationchange", sizeListener, false
+		);
+
+		window.addEventListener(
+			"resize", sizeListener, false
+		);
+	</script>
+</head>
+<body>
+	<div id="content"></div>
+	<script src="../bundle.js"></script>
+</body>
+</html>
