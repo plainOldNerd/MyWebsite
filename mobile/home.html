@@ -3,8 +3,6 @@
 <head>
 	<meta charset="utf-8">
 	<link rel="stylesheet" href="../styles.css">
-
-	<title> I hate web programming! </title>
 	
 	<script>
 		var defaultPortrait = true;
@@ -18,46 +16,69 @@
     		{
     			// portrait
     			if( ori == 0 || ori == 180 )
-    			{
-					document.documentElement.style.backgroundImage = 
-						"url('../Chips.png')";
-					document.documentElement.style.backgroundSize =
-						width.toString() + 'px ' + height.toString() + 'px';
-					document.getElementById('content').style.width = '96%';
-    			}
+    			{  ori = 'portrait';  }
     			// landscape
     			else
-    			{
-					document.documentElement.style.backgroundImage = 
-						"url('../ChipsDrill.png')";
-					document.documentElement.style.backgroundSize =
-						width.toString() + 'px ' + height.toString() + 'px';
-					document.getElementById('content').style.width = '90%';
-    			}
+    			{  ori = 'landscape';}
     		}
     		//  this is untested, because nobody has a Nexus 10
     		else
     		{
     			// landscape
     			if( ori == 0 || ori == 180 )
-    			{
-					document.documentElement.style.backgroundImage = 
-						"url('../ChipsDrill.png')";
-					document.documentElement.style.backgroundSize =
-						width.toString() + 'px ' + height.toString() + 'px';
-					document.getElementById('content').style.width = '90%';
-    			}
+    			{  ori = 'landscape';}
     			// portrait
     			else
-    			{
-					document.documentElement.style.backgroundImage = 
-						"url('../Chips.png')";
-					document.documentElement.style.backgroundSize =
-						width.toString() + 'px ' + height.toString() + 'px';
-					document.getElementById('content').style.width = '96%';
-    			}
+    			{  ori = 'portrait';}
+    		}
+
+    		if( ori == 'portrait' ){
+				document.documentElement.style.backgroundImage = 
+					"url('../Chips.png')";
+				document.documentElement.style.backgroundSize =
+					width.toString() + 'px ' + height.toString() + 'px';
+				document.getElementById('content').style.width = '96%';
+    		}
+    		else{
+				document.documentElement.style.backgroundImage = 
+					"url('../ChipsDrill.png')";
+				document.documentElement.style.backgroundSize =
+					width.toString() + 'px ' + height.toString() + 'px';
+				document.getElementById('content').style.width = '90%';
     		}
 		}
+
+		function zoomAndScroll(){
+			document.documentElement.style.backgroundPosition =
+				window.scrollX.toString() + 'px ' + window.scrollY.toString()
+				+ 'px';
+		}
+
+		(function(sizeListener, zoomAndScroll){
+			var lastWidth = -1;
+
+			function checkZoomed(){
+				var widthNow = window.innerWidth;
+
+				if( lastWidth == widthNow ){
+					return;
+				}
+
+				lastWidth = widthNow;
+
+				sizeListener();
+				zoomAndScroll();
+			}
+
+			setInterval(checkZoomed, 100);
+
+		})(sizeListener, zoomAndScroll);
+
+		window.addEventListener(
+			"scroll", function(){
+				setTimeout(zoomAndScroll, 100);
+			}, false
+		);
 
 		window.addEventListener(
 			"load", function load(event){
