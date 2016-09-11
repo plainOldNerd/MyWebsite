@@ -10,8 +10,11 @@ exports.strings = {'en': {heading: 'What I\'ve Learnt So Far',
 		'<li> Learning about Express may be useful in future. </li>' +
 		'<li> Apple devices work differently to Android devices with regards to ' +
 		'screen.height, window.outerHeight, etc. </li>' +
-		'<li> Android dispatches an orientationchange event several milliseconds ' +
-		'before a resize event. </li>' +
+		'<li> Android dispatches an orientationchange ' + 
+		'<a href="https://en.wikipedia.org/wiki/Event_(computing)" target="_blank"> ' +
+		'event </a> several milliseconds before a resize ' +
+		'<a href="https://en.wikipedia.org/wiki/Event_(computing)" target="_blank"> ' + 
+		'event. </li>' +
 		'<li> Different browsers will handle the same CSS code in different ways. ' +
 		'A friend has recommended Bootstrap, which I\'ll look into in future. </li>' +
 		'</ol>'}, 
