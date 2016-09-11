@@ -1,13 +1,11 @@
 import React from 'react';
 import ReactDOM from 'react-dom';
 
+import {HeaderStyle, HeaderInnerStyle, ChunksStyle} from './styles';
+
 import {Selector} from './components/langselector';
 import {NameDisplay} from './components/namedisplay';
 import {Chunk} from './components/chunk';
-
-var NameDisplayStyle = {
-	display: 'inline'
-};
 
 var Content = React.createClass({
 	getInitialState(){
@@ -36,19 +34,24 @@ var Content = React.createClass({
 	render(){
 		return(
 			<div>
-				<div>
-					<Selector langChosen={this.handleLangSelect} /><br />
-					<NameDisplay ref={(ref) => {this.name = ref}} /><br />
+				<div id='header' style={HeaderStyle}>
+					<div style={HeaderInnerStyle}>
+						<NameDisplay ref={(ref) => {this.name = ref}} />
+						<Selector langChosen={this.handleLangSelect} /><br />
+						<br />
+					</div>
 				</div>
 
-				<Chunk stringsfile='usefullinks' initiallyExpanded={true} 
-					ref={(ref) => {this.usefullinks = ref}} />
-				<Chunk stringsfile='aboutthissite' initiallyExpanded={true}
-					ref={(ref) => {this.aboutthissite = ref}} />
-				<Chunk stringsfile='whativelearnt' initiallyExpanded={false}
-					ref={(ref) => {this.whativelearnt = ref}} />
-				<Chunk stringsfile='acknowledgements' initiallyExpanded={false}
-					ref={(ref) => {this.acknowledgements = ref}} />
+				<div id='chunks' style={ChunksStyle}>
+					<Chunk stringsfile='usefullinks' initiallyExpanded={true} 
+						ref={(ref) => {this.usefullinks = ref}} />
+					<Chunk stringsfile='aboutthissite' initiallyExpanded={true}
+						ref={(ref) => {this.aboutthissite = ref}} />
+					<Chunk stringsfile='whativelearnt' initiallyExpanded={false}
+						ref={(ref) => {this.whativelearnt = ref}} />
+					<Chunk stringsfile='acknowledgements' initiallyExpanded={false}
+						ref={(ref) => {this.acknowledgements = ref}} />
+				</div>
 			</div>
 		);
 	}

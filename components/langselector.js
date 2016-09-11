@@ -28,11 +28,11 @@ var Selector = React.createClass({
 		);
 
 		return(
-			<div style={LangSelectorStyle}>
+			<span style={LangSelectorStyle}>
 				<select onChange={this.langSelected}>
 					{options}
 				</select>
-			</div>
+			</span>
 		);
 	}
 });

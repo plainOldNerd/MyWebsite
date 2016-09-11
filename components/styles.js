@@ -1,11 +1,12 @@
 var LangSelectorStyle = {
+	width: '10%',
 	float: 'right',
 };
 
 /* I hate CSS but anyway... 50% width seems about right for what I want */
 var NameDisplayStyle = {
 	whiteSpace: 'pre',
-	width: '50%',
+	width: '90%',
 	margin: 'auto'
 };
 

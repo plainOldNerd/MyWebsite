@@ -26,12 +26,12 @@ var NameDisplay = React.createClass({
 		var furigana = this.getStrings().furigana;
 
 		return(
-			<div style={NameDisplayStyle}>
+			<span style={NameDisplayStyle}>
 				<span>{furigana}</span><br />
 				<span style={NameStyle}>
 					{name}
 				</span>
-			</div>
+			</span>
 		);
 	}
 });
