@@ -1,5 +1,7 @@
 import React from 'react';
 
+import {Test} from './teststatepassing';
+
 /* this should take as props a file name to open for strings, a value to specify
    whether initially the content of the chunk should be displayed or not, and an 
    optional photo gallery folder.
@@ -11,6 +13,14 @@ var Chunk = React.createClass({
 			expanded: this.props.initiallyExpanded,
 			lang: 'en'
 		};
+	},
+
+	shouldComponentUpdate(nextProps, nextState){
+		this.setState(nextState);
+		if(this.refs.justtesting){
+			this.refs.justtesting.setState({lang: nextState.lang});
+		}
+		return true;
 	},
 
 	getStrings(){
@@ -34,18 +44,35 @@ var Chunk = React.createClass({
 		var strings = this.getStrings();
 
 		if(this.state.expanded){
-			return(
-				<div> 
-					<span onClick={this.handleClick}>
-						<h1> {strings.heading + '   '} 
-							<img src='../collapse.png' height='32'
-								width='32' /> 
-						</h1>
-					</span>
-					<p dangerouslySetInnerHTML={{__html: strings.description}}>
-					</p>
-				</div>
-			);
+			if(this.props.photoGallery){
+				return(
+					<div> 
+						<span onClick={this.handleClick}>
+							<h1> {strings.heading + '   '} 
+								<img src='../collapse.png' height='32'
+									width='32' /> 
+							</h1>
+						</span>
+						<Test ref='justtesting'/>
+						<p dangerouslySetInnerHTML={{__html: strings.description}}>
+						</p>
+					</div>
+				);
+			}
+			else{
+				return(
+					<div> 
+						<span onClick={this.handleClick}>
+							<h1> {strings.heading + '   '} 
+								<img src='../collapse.png' height='32'
+									width='32' /> 
+							</h1>
+						</span>
+						<p dangerouslySetInnerHTML={{__html: strings.description}}>
+						</p>
+					</div>
+				);
+			}
 		}
 		else{
 			return(

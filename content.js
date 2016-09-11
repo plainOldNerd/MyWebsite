@@ -23,6 +23,7 @@ var Content = React.createClass({
 		this.state.cbRefs.push(this.usefullinks);
 		this.state.cbRefs.push(this.whativelearnt);
 		this.state.cbRefs.push(this.acknowledgements);
+		this.state.cbRefs.push(this.t);
 	},
 
 	handleLangSelect(chosen){
@@ -51,6 +52,8 @@ var Content = React.createClass({
 						ref={(ref) => {this.whativelearnt = ref}} />
 					<Chunk stringsfile='acknowledgements' initiallyExpanded={false}
 						ref={(ref) => {this.acknowledgements = ref}} />
+					<Chunk stringsfile='t' initiallyExpanded={true}
+						ref={(ref) => {this.t = ref}} photoGallery='wtf not?!'/>
 				</div>
 			</div>
 		);
