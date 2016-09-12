@@ -28,5 +28,8 @@ var config = {
       path.join(__dirname, 'node_modules'),
     ],
   },
+  node: {
+    fs: 'empty',
+  }
 };
 module.exports = config;

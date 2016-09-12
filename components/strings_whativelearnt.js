@@ -7,14 +7,16 @@ exports.strings = {'en': {heading: 'What I\'ve Learnt So Far',
 		'it on your own computer, but you will need a module bundler such as ' +
 		'Webpack to run it correctly in a client browser. </li>' +
 		'<li> Webpack is not part of npm, but can be installed using npm. </li>' +
+		'<li> While it makes perfect sense, it\'s a nasty surprise that in order ' +
+		'to use npm\'s fs module, you must be using it server-side. </li>' +
 		'<li> Learning about Express may be useful in future. </li>' +
 		'<li> Apple devices work differently to Android devices with regards to ' +
 		'screen.height, window.outerHeight, etc. </li>' +
 		'<li> Android dispatches an orientationchange ' + 
 		'<a href="https://en.wikipedia.org/wiki/Event_(computing)" target="_blank"> ' +
-		'event </a> several milliseconds before a resize ' +
+		'event</a> several milliseconds before a resize ' +
 		'<a href="https://en.wikipedia.org/wiki/Event_(computing)" target="_blank"> ' + 
-		'event. </li>' +
+		'event</a>. </li>' +
 		'<li> Different browsers will handle the same CSS code in different ways. ' +
 		'A friend has recommended Bootstrap, which I\'ll look into in future. </li>' +
 		'</ol>'}, 
@@ -24,6 +26,7 @@ exports.strings = {'en': {heading: 'What I\'ve Learnt So Far',
 		'<li> node.jsをインストールしてても、モジュラリゼーションができて、自分のパソコンでウェッブページが' +
 		'表示できるけど、Webpackみたいなやつを使わなかったら、他の人はブラウザーで表示できないと思う。 </li>' +
 		'<li> Webpackはnpmの部分じゃないけど、npmを使ってインストールできる。 </li>' +
+		'<li> 全然通じても、酷くびっくりするのは、npmのfsモジュールを使う為に、サーバーで使う必要がある。</li>' +
 		'<li> Expressのことを自習すればいいかも。 </li>' +
 		'<li> screen.heightやwindow.outerHeightなどは、どう言うふうにマネージされるのか、Appleのデバイス' +
 		'とAndroidのデバイスが大分違ってしまう。 </li>' +
