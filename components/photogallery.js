@@ -1,10 +1,10 @@
 import React from 'react';
 
-var strings = {'en': {testmessage: 'it seems that passing state works'},
-		'jp': {testmessage: 'ステートを伝えるのができたらしいね'}
+var strings = {'en': {testmessage: 'there will be a photo gallery here'},
+		'jp': {testmessage: 'ここに写真ギャラリーが入って来る'}
 };
 
-var Test = React.createClass({
+var PhotoGallery = React.createClass({
 	getInitialState(){
 		return({lang: 'en'});
 	},
@@ -28,4 +28,4 @@ var Test = React.createClass({
 	}
 });
 
-export {Test};
+export {PhotoGallery};

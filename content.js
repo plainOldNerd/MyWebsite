@@ -23,7 +23,7 @@ var Content = React.createClass({
 		this.state.cbRefs.push(this.usefullinks);
 		this.state.cbRefs.push(this.whativelearnt);
 		this.state.cbRefs.push(this.acknowledgements);
-		this.state.cbRefs.push(this.t);
+		this.state.cbRefs.push(this.aboutme);
 	},
 
 	handleLangSelect(chosen){
@@ -44,14 +44,16 @@ var Content = React.createClass({
 				</div>
 
 				<div id='chunks' style={ChunksStyle}>
-					<Chunk stringsfile='usefullinks' initiallyExpanded={true} 
+					<Chunk files='usefullinks' initiallyExpanded={true} 
 						ref={(ref) => {this.usefullinks = ref}} />
-					<Chunk stringsfile='aboutthissite' initiallyExpanded={true}
+					<Chunk files='aboutthissite' initiallyExpanded={true}
 						ref={(ref) => {this.aboutthissite = ref}} />
-					<Chunk stringsfile='whativelearnt' initiallyExpanded={false}
+					<Chunk files='whativelearnt' initiallyExpanded={false}
 						ref={(ref) => {this.whativelearnt = ref}} />
-					<Chunk stringsfile='acknowledgements' initiallyExpanded={false}
+					<Chunk files='acknowledgements' initiallyExpanded={false}
 						ref={(ref) => {this.acknowledgements = ref}} />
+					<Chunk files='aboutme' initiallyExpanded={false}
+						ref={(ref) => {this.aboutme = ref}} />
 				</div>
 			</div>
 		);
@@ -59,8 +61,3 @@ var Content = React.createClass({
 });
 
 ReactDOM.render(<Content />, document.getElementById('content'));
-
-/*
-					<Chunk stringsfile='t' initiallyExpanded={true}
-						ref={(ref) => {this.t = ref}} photoGallery='t'/>
-*/

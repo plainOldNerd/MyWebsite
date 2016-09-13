@@ -1,15 +1,31 @@
 import React from 'react';
 
-import {Test} from './teststatepassing';
+import {PhotoGallery} from './photogallery';
 
-/* this should take as props a file name to open for strings, a value to specify
-   whether initially the content of the chunk should be displayed or not, and an 
-   optional photo gallery folder.
+/* this is set in getInitialState method
+   for the photo gallery to be rendered, it is IMPERATIVE that the photos are
+   contained within a folder of the same name as this.props.files and that 
+   folder contains a file thisExists.js
+*/
+var photoGalleryExists;
+
+/* this should take as props "files" which specifies which file to get strings 
+   from, but also is used to check for the existence of a photo gallery folder. 
+   A value to specify whether initially the content of the chunk should be 
+   displayed or not is also given.
 */
 var Chunk = React.createClass({
 	getInitialState(){
+		try{
+			require('../photogalleries/' + this.props.files + '/thisExists');
+			photoGalleryExists = true;
+		}
+		catch(err){
+			photoGalleryExists = false;
+		}
+
 		return {
-			s: require('./strings_' + this.props.stringsfile).strings,
+			s: require('./strings_' + this.props.files).strings,
 			expanded: this.props.initiallyExpanded,
 			lang: 'en'
 		};
@@ -17,8 +33,8 @@ var Chunk = React.createClass({
 
 	shouldComponentUpdate(nextProps, nextState){
 		this.setState(nextState);
-		if(this.refs.justtesting){
-			this.refs.justtesting.setState({lang: nextState.lang});
+		if(this.refs.pg){
+			this.refs.pg.setState({lang: nextState.lang});
 		}
 		return true;
 	},
@@ -44,7 +60,7 @@ var Chunk = React.createClass({
 		var strings = this.getStrings();
 
 		if(this.state.expanded){
-			if(this.props.photoGallery){
+			if(photoGalleryExists){
 				return(
 					<div> 
 						<span onClick={this.handleClick}>
@@ -53,7 +69,7 @@ var Chunk = React.createClass({
 									width='32' /> 
 							</h1>
 						</span>
-						<Test ref='justtesting'/>
+						<PhotoGallery ref='pg'/>
 						<p dangerouslySetInnerHTML={{__html: strings.description}}>
 						</p>
 					</div>
