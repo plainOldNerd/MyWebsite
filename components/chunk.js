@@ -2,29 +2,26 @@ import React from 'react';
 
 import {PhotoGallery} from './photogallery';
 
-/* this is set in getInitialState method
-   for the photo gallery to be rendered, it is IMPERATIVE that the photos are
-   contained within a folder of the same name as this.props.files and that 
-   folder contains a file thisExists.js
-*/
-var photoGalleryExists;
-
 /* this should take as props "files" which specifies which file to get strings 
    from, but also is used to check for the existence of a photo gallery folder. 
-   A value to specify whether initially the content of the chunk should be 
+   A value to specify whether initially the content of the Chunk should be 
    displayed or not is also given.
 */
 var Chunk = React.createClass({
 	getInitialState(){
+		//  determine if a photo gallery is associated with this Chunk
+		var pge;
+
 		try{
 			require('../photogalleries/' + this.props.files + '/thisExists');
-			photoGalleryExists = true;
+			pge = true;
 		}
 		catch(err){
-			photoGalleryExists = false;
+			pge = false;
 		}
 
 		return {
+			photoGalleryExists: pge,
 			s: require('./strings_' + this.props.files).strings,
 			expanded: this.props.initiallyExpanded,
 			lang: 'en'
@@ -60,7 +57,7 @@ var Chunk = React.createClass({
 		var strings = this.getStrings();
 
 		if(this.state.expanded){
-			if(photoGalleryExists){
+			if(this.state.photoGalleryExists){
 				return(
 					<div> 
 						<span onClick={this.handleClick}>
@@ -69,7 +66,7 @@ var Chunk = React.createClass({
 									width='32' /> 
 							</h1>
 						</span>
-						<PhotoGallery ref='pg'/>
+						<PhotoGallery initialLang={this.state.lang} ref='pg'/>
 						<p dangerouslySetInnerHTML={{__html: strings.description}}>
 						</p>
 					</div>

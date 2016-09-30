@@ -6,7 +6,7 @@ var strings = {'en': {testmessage: 'there will be a photo gallery here'},
 
 var PhotoGallery = React.createClass({
 	getInitialState(){
-		return({lang: 'en'});
+		return({lang: this.props.initialLang});
 	},
 
 	getStrings(){

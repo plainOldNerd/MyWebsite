@@ -27,7 +27,7 @@ var NameDisplay = React.createClass({
 
 		return(
 			<span style={NameDisplayStyle}>
-				<span>{furigana}</span><br />
+				<span dangerouslySetInnerHTML={{__html: furigana}}></span><br />
 				<span style={NameStyle}>
 					{name}
 				</span>
