@@ -11,9 +11,8 @@ var Chunk = React.createClass({
 	getInitialState(){
 		//  determine if a photo gallery is associated with this Chunk
 		var pge;
-
 		try{
-			require('../photogalleries/' + this.props.files + '/thisExists');
+			require('../photogalleries/' + this.props.files + '/galleryinfo');
 			pge = true;
 		}
 		catch(err){
@@ -66,9 +65,10 @@ var Chunk = React.createClass({
 									width='32' /> 
 							</h1>
 						</span>
-						<PhotoGallery initialLang={this.state.lang} ref='pg'/>
 						<p dangerouslySetInnerHTML={{__html: strings.description}}>
 						</p>
+						<PhotoGallery files={this.props.files} 
+							initialLang={this.state.lang} ref='pg'/>
 					</div>
 				);
 			}

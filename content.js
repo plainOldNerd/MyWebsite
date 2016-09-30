@@ -52,8 +52,7 @@ var Content = React.createClass({
 						ref={(ref) => {this.whativelearnt = ref}} />
 					<Chunk files='acknowledgements' initiallyExpanded={false}
 						ref={(ref) => {this.acknowledgements = ref}} />
-					<Chunk files='aboutme' initiallyExpanded={false}
-						ref={(ref) => {this.aboutme = ref}} />
+
 				</div>
 			</div>
 		);
@@ -61,3 +60,8 @@ var Content = React.createClass({
 });
 
 ReactDOM.render(<Content />, document.getElementById('content'));
+
+/*
+					<Chunk files='aboutme' initiallyExpanded={false}
+						ref={(ref) => {this.aboutme = ref}} />
+*/

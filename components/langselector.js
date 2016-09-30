@@ -1,6 +1,6 @@
 import React from 'react';
 
-import {LangSelectorStyle} from './styles';
+import {LangSelectorSpanStyle, SelectStyle} from './styles';
 
 /* this should perhaps be a constant global. that could assist in guaranteeing 
    consistency between all components as to available languages. 
@@ -20,7 +20,8 @@ var Selector = React.createClass({
 		var options = languages.map(
 			function(optval, index){
 				return(
-					<option value={optval.value} key={'langOption' + index}> 
+					<option value={optval.value} 
+						key={'langOption' + index}> 
 						{optval.option} 
 					</option>
 				);
@@ -28,8 +29,8 @@ var Selector = React.createClass({
 		);
 
 		return(
-			<span style={LangSelectorStyle}>
-				<select onChange={this.langSelected}>
+			<span style={LangSelectorSpanStyle}>
+				<select style={SelectStyle} onChange={this.langSelected}>
 					{options}
 				</select>
 			</span>
