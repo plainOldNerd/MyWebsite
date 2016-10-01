@@ -1,5 +1,22 @@
 import React from 'react';
-import {ThumbnailStyle} from './styles';
+import {ThumbnailStyle, MainDisplayDivStyle} from './styles';
+
+var Thumbnail = React.createClass({
+	handleClick(){
+		console.log('thumbnail ' + this.props.index.toString() + ' clicked!');
+	},
+
+	render(){
+		return (
+			<img src={"../photogalleries/" + this.props.files + "/" + 
+				this.props.index.toString() + ".jpg"} 
+				alt={this.props.index.toString() + ".jpg"} 
+				height="100px" width="100px" 
+				onClick={() => this.handleClick(this.props.index)}
+				style={ThumbnailStyle} />
+		);
+	}
+});
 
 /* this takes as props initialLang, which of course determines the initial
    language (I will look into Redux in future), but also files, which is a
@@ -14,29 +31,33 @@ var PhotoGallery = React.createClass({
 			s: require('./strings_' + this.props.files).strings,
 			// "gi" short for "galleryinfo"
 			gi: require('../photogalleries/' + this.props.files + '/files').info,
-			thumbnails: []
+			thumbnails: [],
+			maindisplay: '0'
 		};
 	},
 
-	prepareThumbnails(){
+	componentWillMount(){
 		var giLength = Object.keys(this.state.gi).length;
 
 		for(var i=0; i<giLength; ++i){
 			this.state.thumbnails.push(
-				<img src={"../photogalleries/" + this.props.files + "/" + 
-					i.toString() + ".jpg"} alt={i.toString() + ".jpg"} 
-					height="100px" width="100px" key={this.props.files + "-" + i}
-					style={ThumbnailStyle} />
+				<Thumbnail files={this.props.files} index={i} 
+					key={this.props.files + '-' + i} />
 			);
 		}
 	},
 
 	render(){
-		this.prepareThumbnails();
-
 		return(
 			<div>
-				{this.state.thumbnails}
+				<div>
+					{this.state.thumbnails}
+				</div>
+				<div style={MainDisplayDivStyle}>
+					<img src={"../photogalleries/" + this.props.files + "/" +
+							this.state.maindisplay.toString() + ".jpg"}
+						alt="some shit fucked up!" style={ThumbnailStyle} />
+				</div>
 			</div>
 		);
 	}

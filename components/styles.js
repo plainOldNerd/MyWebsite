@@ -25,10 +25,16 @@ var ThumbnailStyle = {
 	borderWidth: '1px'
 };
 
+var MainDisplayDivStyle = {
+	width: '50%',
+	margin: 'auto'
+};
+
 export {
 	LangSelectorSpanStyle, 
 	SelectStyle,
 	NameDisplayStyle,
 	NameStyle,
-	ThumbnailStyle
+	ThumbnailStyle,
+	MainDisplayDivStyle
 };

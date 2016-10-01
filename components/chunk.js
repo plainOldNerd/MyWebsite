@@ -29,6 +29,7 @@ var Chunk = React.createClass({
 
 	shouldComponentUpdate(nextProps, nextState){
 		this.setState(nextState);
+		// "pg" stands for "photogallery"
 		if(this.refs.pg){
 			this.refs.pg.setState({lang: nextState.lang});
 		}
