@@ -1,9 +1,13 @@
 import React from 'react';
 import {ThumbnailStyle, MainDisplayDivStyle} from './styles';
 
+/* takes props files, index, and handleClick. index is an integer 
+   and specifies which thumbnail this is. handleClick is a callback so that 
+   PhotoGallery can handle the click knowing which Thumbnail was clicked
+*/
 var Thumbnail = React.createClass({
 	handleClick(){
-		console.log('thumbnail ' + this.props.index.toString() + ' clicked!');
+		this.props.handleClick(this.props.index);
 	},
 
 	render(){
@@ -12,7 +16,7 @@ var Thumbnail = React.createClass({
 				this.props.index.toString() + ".jpg"} 
 				alt={this.props.index.toString() + ".jpg"} 
 				height="100px" width="100px" 
-				onClick={() => this.handleClick(this.props.index)}
+				onClick={this.handleClick}
 				style={ThumbnailStyle} />
 		);
 	}
@@ -36,12 +40,17 @@ var PhotoGallery = React.createClass({
 		};
 	},
 
+	handleThumbnailClick(index){
+		console.log('thumbnail ' + index + ' was clicked!');
+	},
+
 	componentWillMount(){
 		var giLength = Object.keys(this.state.gi).length;
 
 		for(var i=0; i<giLength; ++i){
 			this.state.thumbnails.push(
 				<Thumbnail files={this.props.files} index={i} 
+					handleClick={this.handleThumbnailClick}
 					key={this.props.files + '-' + i} />
 			);
 		}
