@@ -18,9 +18,17 @@ var NameStyle = {
 	fontWeight: 'bold'
 };
 
+var ThumbnailStyle = {
+	margin: '2px',
+	borderRadius: '8px',
+	borderStyle: 'solid',
+	borderWidth: '1px'
+};
+
 export {
 	LangSelectorSpanStyle, 
 	SelectStyle,
 	NameDisplayStyle,
-	NameStyle
+	NameStyle,
+	ThumbnailStyle
 };

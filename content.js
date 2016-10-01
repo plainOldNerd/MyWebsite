@@ -44,15 +44,18 @@ var Content = React.createClass({
 				</div>
 
 				<div id='chunks' style={ChunksStyle}>
-					<Chunk files='usefullinks' initiallyExpanded={true} 
+					<Chunk files='usefullinks' initiallyExpanded={false} 
 						ref={(ref) => {this.usefullinks = ref}} />
-					<Chunk files='aboutthissite' initiallyExpanded={true}
+					<Chunk files='aboutthissite' initiallyExpanded={false}
 						ref={(ref) => {this.aboutthissite = ref}} />
 					<Chunk files='whativelearnt' initiallyExpanded={false}
 						ref={(ref) => {this.whativelearnt = ref}} />
 					<Chunk files='acknowledgements' initiallyExpanded={false}
 						ref={(ref) => {this.acknowledgements = ref}} />
+					<Chunk files='aboutme' initiallyExpanded={true}
+						ref={(ref) => {this.aboutme = ref}} />
 
+					<p style={{visibility:'hidden'}} > lalala </p>
 				</div>
 			</div>
 		);
@@ -62,6 +65,5 @@ var Content = React.createClass({
 ReactDOM.render(<Content />, document.getElementById('content'));
 
 /*
-					<Chunk files='aboutme' initiallyExpanded={false}
-						ref={(ref) => {this.aboutme = ref}} />
+
 */

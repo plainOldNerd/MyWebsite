@@ -1,5 +1,3 @@
-import React from 'react';
-
 exports.strings = {'en': {heading: 'My Profiles Elsewhere', 
 		description: '<ul> <li> <a href="https://au.linkedin.com/in/andrew-mouat-269a46105" ' + 
 		'target="_blank">LinkedIn<a> </li>' +

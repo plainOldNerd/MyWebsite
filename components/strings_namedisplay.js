@@ -1,5 +1,3 @@
-import React from 'react';
-
 var NameDisplay_Strings = 
 	{'en': {name: 'Andrew Mouat', 
 			furigana: '                                                      ' +

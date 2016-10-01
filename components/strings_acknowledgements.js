@@ -1,5 +1,3 @@
-import React from 'react';
-
 exports.strings = {'en': {heading: 'Acknowledgements', 
 	description: '<ul> <li> <a href="http://andrewhfarmer.com/build-your-own-starter/#0-intro" ' +
 		'target="_blank">Build Your Own Starter</a> helped hugely in ' +

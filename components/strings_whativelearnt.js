@@ -1,5 +1,3 @@
-import React from 'react';
-
 exports.strings = {'en': {heading: 'What I\'ve Learnt So Far', 
 	description: '<ol> <li> It\'s possible to write a webpage in React without ' +
 		'node.js, but impossible to modularise it. </li>' +

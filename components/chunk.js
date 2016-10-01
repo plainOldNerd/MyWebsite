@@ -12,7 +12,7 @@ var Chunk = React.createClass({
 		//  determine if a photo gallery is associated with this Chunk
 		var pge;
 		try{
-			require('../photogalleries/' + this.props.files + '/galleryinfo');
+			require('../photogalleries/' + this.props.files + '/files');
 			pge = true;
 		}
 		catch(err){

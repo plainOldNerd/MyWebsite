@@ -1,5 +1,3 @@
-import React from 'react';
-
 exports.strings = {'en': {heading: 'About This Site', 
 	description: 'I decided to build this website for two main reasons: ' +
 		'<ol> ' + 
