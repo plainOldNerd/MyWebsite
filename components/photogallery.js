@@ -1,5 +1,5 @@
 import React from 'react';
-import {ThumbnailStyle, MainDisplayDivStyle} from './styles';
+import {ThumbnailStyle, MainDisplayDivStyle, MainDisplayStyle} from './styles';
 
 /* takes props files, index, and handleClick. index is an integer 
    and specifies which thumbnail this is. handleClick is a callback so that 
@@ -12,10 +12,9 @@ var Thumbnail = React.createClass({
 
 	render(){
 		return (
-			<img src={"../photogalleries/" + this.props.files + "/" + 
-				this.props.index.toString() + ".jpg"} 
-				alt={this.props.index.toString() + ".jpg"} 
-				height="100px" width="100px" 
+			<img src={'../photogalleries/' + this.props.files + '/' + 
+				this.props.index.toString() + '.jpg'} 
+				alt={this.props.index.toString() + '.jpg'} 
 				onClick={this.handleClick}
 				style={ThumbnailStyle} />
 		);
@@ -31,9 +30,9 @@ var PhotoGallery = React.createClass({
 	getInitialState(){
 		return {
 			lang: this.props.initialLang,
-			// "s" short for "strings"
+			// 's' short for 'strings'
 			s: require('./strings_' + this.props.files).strings,
-			// "gi" short for "galleryinfo"
+			// 'gi' short for 'galleryinfo'
 			gi: require('../photogalleries/' + this.props.files + '/files').info,
 			thumbnails: [],
 			maindisplay: '0'
@@ -41,7 +40,7 @@ var PhotoGallery = React.createClass({
 	},
 
 	handleThumbnailClick(index){
-		console.log('thumbnail ' + index + ' was clicked!');
+		this.setState({maindisplay: index.toString()});
 	},
 
 	componentWillMount(){
@@ -56,16 +55,26 @@ var PhotoGallery = React.createClass({
 		}
 	},
 
+	componentDidMount(){
+		var giLength = Object.keys(this.state.gi).length;
+
+		document.getElementById('maindisplayDiv').style.width
+			= Math.max(175, giLength * 56).toString() + 'px';
+	},
+
 	render(){
 		return(
 			<div>
 				<div>
 					{this.state.thumbnails}
 				</div>
-				<div style={MainDisplayDivStyle}>
-					<img src={"../photogalleries/" + this.props.files + "/" +
-							this.state.maindisplay.toString() + ".jpg"}
-						alt="some shit fucked up!" style={ThumbnailStyle} />
+				<div id='maindisplayDiv'>
+					<div style={MainDisplayDivStyle}>
+						<img src={'../photogalleries/' + this.props.files + '/' +
+								this.state.maindisplay.toString() + '.jpg'}
+							alt='some shit fucked up!' 
+							style={MainDisplayStyle} />
+					</div>
 				</div>
 			</div>
 		);

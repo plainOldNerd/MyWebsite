@@ -14,7 +14,7 @@ var NameDisplayStyle = {
 };
 
 var NameStyle = {
-	fontSize: '4em',
+	fontSize: '3em',
 	fontWeight: 'bold'
 };
 
@@ -22,12 +22,21 @@ var ThumbnailStyle = {
 	margin: '2px',
 	borderRadius: '8px',
 	borderStyle: 'solid',
-	borderWidth: '1px'
+	borderWidth: '1px',
+	height: '50px',
+	width: '50px'
 };
 
 var MainDisplayDivStyle = {
-	width: '50%',
+	width: '175px',
 	margin: 'auto'
+};
+
+var MainDisplayStyle = {
+	borderRadius: '8px',
+	borderStyle: 'solid',
+	borderWidth: '1px',
+	width: '175px'
 };
 
 export {
@@ -36,5 +45,6 @@ export {
 	NameDisplayStyle,
 	NameStyle,
 	ThumbnailStyle,
-	MainDisplayDivStyle
+	MainDisplayDivStyle,
+	MainDisplayStyle
 };
