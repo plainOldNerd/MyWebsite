@@ -37,7 +37,7 @@ var PhotoGallery = React.createClass({
 			gi: require('../photogalleries/' + this.props.files + '/files').info,
 			thumbnails: [],
 			// this is the filename shown in the main display
-			maindisplay: '0.jpg'
+			maindisplay: this.props.initialMainDisplay
 		};
 	},
 
@@ -47,9 +47,11 @@ var PhotoGallery = React.createClass({
 		var specificInfo = gi[index.toString()];
 
 		if(specificInfo.video){
+			this.props.rememberIndex(index.toString() + '.mp4');
 			this.setState({maindisplay: index.toString() + '.mp4'});
 		}
 		else{
+			this.props.rememberIndex(index.toString() + '.jpg');
 			this.setState({maindisplay: index.toString() + '.jpg'});
 		}
 	},
@@ -75,6 +77,7 @@ var PhotoGallery = React.createClass({
 		if(series){
 			// we are looking at something like 0.jpg, and NOT 0_0.jpg
 			if(indexes.length == 1){
+				this.props.rememberIndex(indexes[0] + '_0.jpg');
 				this.setState({maindisplay: indexes[0] + '_0.jpg'});
 			}
 			/* now we are looking at something alike 0_0.jpg. go to the next 
@@ -83,11 +86,14 @@ var PhotoGallery = React.createClass({
 			else{
 				// we are viewing the last in the series
 				if(parseInt(indexes[1]) == Object.keys(series).length-1){
+					this.props.rememberIndex(indexes[0] + '.jpg');
 					this.setState({maindisplay: indexes[0] + '.jpg'});
 				}
 				// there are more in the series
 				else{
 					var seriesindex = parseInt(indexes[1])+1;
+					this.props.rememberIndex(indexes[0] + '_' + seriesindex + 
+						'.jpg');
 					this.setState({maindisplay: indexes[0] + '_' + seriesindex 
 						+ '.jpg'});
 				}

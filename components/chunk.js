@@ -21,6 +21,7 @@ var Chunk = React.createClass({
 
 		return {
 			photoGalleryExists: pge,
+			photoGalleryIndex: '0.jpg',
 			s: require('./strings_' + this.props.files).strings,
 			expanded: this.props.initiallyExpanded,
 			lang: 'en'
@@ -53,6 +54,10 @@ var Chunk = React.createClass({
 		this.setState({expanded: !this.state.expanded});
 	},
 
+	rememberPhotoGalleryIndex(pgIndex){
+		this.setState({photoGalleryIndex: pgIndex});
+	},
+
 	render(){
 		var strings = this.getStrings();
 
@@ -69,7 +74,12 @@ var Chunk = React.createClass({
 						<p dangerouslySetInnerHTML={{__html: strings.description}}>
 						</p>
 						<PhotoGallery files={this.props.files} 
-							initialLang={this.state.lang} ref='pg'/>
+							initialLang={this.state.lang} 
+							initialMainDisplay=
+								{this.state.photoGalleryIndex}
+							rememberIndex=
+								{this.rememberPhotoGalleryIndex}
+							ref='pg'/>
 					</div>
 				);
 			}
