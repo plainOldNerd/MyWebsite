@@ -63,5 +63,12 @@ exports.info =
 				'Tshirt that they had written on, and we all did karaoke.', 
 			'jp': '富山から帰る前に、友達がみんな何か書いてくれたTシャツをくれて、みんなでカラオケしたの。'
 		}
+	 },
+'7': {
+		description: {
+			'en': 'a video of my dog',
+			'jp': '俺のワンちゃんのビデオ'
+		},
+		video: true
 	 }
 };
