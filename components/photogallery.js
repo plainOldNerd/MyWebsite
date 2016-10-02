@@ -100,15 +100,22 @@ var PhotoGallery = React.createClass({
 		var maindisplay = this.state.maindisplay;
 		var description = '';
 
-		// test for a single (not series) photo or video
-		var indexes = maindisplay.match(/\d+\.jpg|\d+\.mp4/g);
+		/* test for series photos first, since these will match the single photo
+		   regex if tested later
+		*/
+		var indexes = maindisplay.match(/\d+_\d+\.jpg/);
 		if(indexes){
+			indexes = maindisplay.match(/\d+/g);
+			return gi[indexes[0]].series[indexes[0] + '_' + indexes[1]]
+				.description[this.state.lang];
+		}
+
+		// test for a single (not series) photo or video
+		indexes = maindisplay.match(/\d+\.jpg|\d+\.mp4/g);
+		if(indexes.length == 1){
 			indexes = maindisplay.match(/\d+/);
 			return gi[indexes[0]].description[this.state.lang];
 		}
-
-		// now test for series photos
-
 
 		return description;
 	},
