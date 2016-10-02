@@ -67,6 +67,34 @@ var PhotoGallery = React.createClass({
 		}
 	},
 
+	handleMainPhotoClick(){
+		var gi = this.state.gi;
+		var indexes = this.state.maindisplay.match(/\d+/g);
+		var series = gi[indexes[0]].series;
+
+		if(series){
+			// we are looking at something like 0.jpg, and NOT 0_0.jpg
+			if(indexes.length == 1){
+				this.setState({maindisplay: indexes[0] + '_0.jpg'});
+			}
+			/* now we are looking at something alike 0_0.jpg. go to the next 
+			   photo in the series or return to 0.jpg if you're at the last one
+			*/
+			else{
+				// we are viewing the last in the series
+				if(parseInt(indexes[1]) == Object.keys(series).length-1){
+					this.setState({maindisplay: indexes[0] + '.jpg'});
+				}
+				// there are more in the series
+				else{
+					var seriesindex = parseInt(indexes[1])+1;
+					this.setState({maindisplay: indexes[0] + '_' + seriesindex 
+						+ '.jpg'});
+				}
+			}
+		}
+	},
+
 	getDescription(){
 		var gi = this.state.gi;
 		var maindisplay = this.state.maindisplay;
@@ -80,12 +108,12 @@ var PhotoGallery = React.createClass({
 		}
 
 		// now test for series photos
-		
+
 
 		return description;
 	},
 
-	// this is designed to render photos and videos only
+	// this is designed to render photos, photo series and videos only
 	render(){
 		var fileDescription = this.getDescription();
 
@@ -99,10 +127,12 @@ var PhotoGallery = React.createClass({
 						<img src={'../photogalleries/' + this.props.files + '/' +
 								this.state.maindisplay}
 							alt='some shit fucked up!' 
+							onClick={this.handleMainPhotoClick}
 							className='maindisplay'
 							style={MainDisplayStyle} 
 						/> <br />
-						{fileDescription}
+						<span dangerouslySetInnerHTML={{__html: fileDescription}}>
+						</span>
 					</div>
 				</div>
 			);
