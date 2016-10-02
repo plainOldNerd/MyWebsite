@@ -73,6 +73,7 @@ var Chunk = React.createClass({
 					</div>
 				);
 			}
+			// expanded, but no photo gallery
 			else{
 				return(
 					<div> 
@@ -88,6 +89,7 @@ var Chunk = React.createClass({
 				);
 			}
 		}
+		// not expanded
 		else{
 			return(
 				<div>

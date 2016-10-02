@@ -1,5 +1,5 @@
 import React from 'react';
-import {ThumbnailStyle, MainDisplayDivStyle, MainDisplayStyle} from './styles';
+import {ThumbnailStyle, MainDisplayStyle} from './styles';
 
 /* takes props files, index, and handleClick. index is an integer 
    and specifies which thumbnail this is. handleClick is a callback so that 
@@ -16,6 +16,7 @@ var Thumbnail = React.createClass({
 				this.props.index.toString() + '.jpg'} 
 				alt={this.props.index.toString() + '.jpg'} 
 				onClick={this.handleClick}
+				className='thumbnail'
 				style={ThumbnailStyle} />
 		);
 	}
@@ -35,14 +36,25 @@ var PhotoGallery = React.createClass({
 			// 'gi' short for 'galleryinfo'
 			gi: require('../photogalleries/' + this.props.files + '/files').info,
 			thumbnails: [],
-			maindisplay: '0'
+			// this is the filename shown in the main display
+			maindisplay: '0.jpg'
 		};
 	},
 
+	// get the next photo or video displayed
 	handleThumbnailClick(index){
-		this.setState({maindisplay: index.toString()});
+		var gi = this.state.gi;
+		var specificInfo = gi[index.toString()];
+
+		if(specificInfo.video){
+			this.setState({maindisplay: index.toString() + '.mp4'});
+		}
+		else{
+			this.setState({maindisplay: index.toString() + '.jpg'});
+		}
 	},
 
+	// prepare thumbnails
 	componentWillMount(){
 		var giLength = Object.keys(this.state.gi).length;
 
@@ -55,29 +67,49 @@ var PhotoGallery = React.createClass({
 		}
 	},
 
-	componentDidMount(){
-		var giLength = Object.keys(this.state.gi).length;
+	getDescription(){
+		var description = '';
 
-		document.getElementById('maindisplayDiv').style.width
-			= Math.max(175, giLength * 56).toString() + 'px';
+		return description;
 	},
 
+	// this is designed to render photos and videos only
 	render(){
-		return(
-			<div>
+		var fileDescription = this.getDescription();
+
+		if(this.state.maindisplay.match(/\.jpg/)){
+			return(
 				<div>
-					{this.state.thumbnails}
-				</div>
-				<div id='maindisplayDiv'>
-					<div style={MainDisplayDivStyle}>
+					<div>
+						{this.state.thumbnails}
+					</div>
+					<div className='maindisplayDiv'>
 						<img src={'../photogalleries/' + this.props.files + '/' +
-								this.state.maindisplay.toString() + '.jpg'}
+								this.state.maindisplay}
 							alt='some shit fucked up!' 
-							style={MainDisplayStyle} />
+							className='maindisplay'
+							style={MainDisplayStyle} 
+						/> <br />
+						{fileDescription}
 					</div>
 				</div>
-			</div>
-		);
+			);
+		}
+
+		if(this.state.maindisplay.match(/\.mp4/)){
+			return(
+				<div>
+					<div>
+						{this.state.thumbnails}
+					</div>
+					<div className='maindisplayDiv'>
+						video goes here <br />
+						{fileDescription}
+					</div>
+				</div>
+			);
+		}
+		return (<div></div>);
 	}
 });
 

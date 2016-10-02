@@ -22,21 +22,13 @@ var ThumbnailStyle = {
 	margin: '2px',
 	borderRadius: '8px',
 	borderStyle: 'solid',
-	borderWidth: '1px',
-	height: '50px',
-	width: '50px'
-};
-
-var MainDisplayDivStyle = {
-	width: '175px',
-	margin: 'auto'
+	borderWidth: '1px'
 };
 
 var MainDisplayStyle = {
 	borderRadius: '8px',
 	borderStyle: 'solid',
-	borderWidth: '1px',
-	width: '175px'
+	borderWidth: '1px'
 };
 
 export {
@@ -45,6 +37,5 @@ export {
 	NameDisplayStyle,
 	NameStyle,
 	ThumbnailStyle,
-	MainDisplayDivStyle,
 	MainDisplayStyle
 };
