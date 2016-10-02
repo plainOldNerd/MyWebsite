@@ -68,7 +68,19 @@ var PhotoGallery = React.createClass({
 	},
 
 	getDescription(){
+		var gi = this.state.gi;
+		var maindisplay = this.state.maindisplay;
 		var description = '';
+
+		// test for a single (not series) photo or video
+		var indexes = maindisplay.match(/\d+\.jpg|\d+\.mp4/g);
+		if(indexes){
+			indexes = maindisplay.match(/\d+/);
+			return gi[indexes[0]].description[this.state.lang];
+		}
+
+		// now test for series photos
+		
 
 		return description;
 	},
