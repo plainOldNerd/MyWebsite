@@ -18,8 +18,7 @@ exports.info =
 	 },
 '2': {
  		description: {
-			'en': 'Click the image.<br /><br />' +
-				'In my early years at high school my nickname was ' +
+			'en': 'In my early years at high school my nickname was ' +
 				'<a href="https://en.wikipedia.org/wiki/Weird_Science_(TV_series)" ' +
 				'target="_blank">"Weird Science"</a>.', 
 			'jp': 'クリックしてこの写真シリーズを見てごらん。<br /><br />' +
@@ -51,13 +50,6 @@ exports.info =
 		}
 	 },
 '5': {
-		description: {
-			'en': 'In Toyama, Japan, I think a friend dared me to put a chopstick ' +
-				'up my nose because he wanted the photo.', 
-			'jp': '富山で、たぶん或る友人は写真を撮りたかったからお鼻にお箸を入れるのを願ったと思う。'
-		}
-	 },
-'6': {
 		description: {
 			'en': 'Before coming home from Toyama, Japan, my friends gave me a ' +
 				'Tshirt that they had written on, and we all did karaoke.', 

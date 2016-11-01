@@ -1,26 +1,33 @@
+var wasPortrait;
+
 function sizeListener(){
 	var width = window.innerWidth;
 	var height = window.innerHeight;
 	var ratio = width/height;
-	var ori; //orientation
+	var portrait; //orientation
 
 	/* if width>height then we should render a landscape.
 	*/
-	if(ratio>1){  ori = 'landscape';  }
-	else{  ori = 'portrait';  }
+	if(ratio>1){  portrait = false;  }
+	else{  portrait = true;  }
 
-	switch(ori){
-		case 'landscape':
-			document.documentElement.style.backgroundImage = 
-				"url('../ChipsDrill.png')";
-			document.getElementById('content').style.width = '90%';
-			break;
-		case 'portrait':
+	if(wasPortrait === undefined){
+		wasPortrait = !portrait;
+	}
+
+	if(portrait != wasPortrait){
+		if(portrait){
 			document.documentElement.style.backgroundImage = 
 				"url('../Chips.png')";
-			document.getElementById('content').style.width = '96%';
-		default:
+		}
+		else{
+			document.documentElement.style.backgroundImage = 
+				"url('../ChipsDrill.png')";
+		}
+
+		wasPortrait = portrait;
 	}
+
 	document.documentElement.style.backgroundSize =
 		width.toString() + 'px ' + height.toString() + 'px';
 

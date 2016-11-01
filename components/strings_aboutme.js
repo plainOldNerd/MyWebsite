@@ -5,7 +5,7 @@ exports.strings = {'en': {heading: 'About Me',
 		'While doing my first degree I used to play a lot of Yahoo Games, ' +
 		'and in particular Checkers. <br />' +
 		'These days, when I\'m not hanging out with friends, I spend a lot of ' +
-		'time doign jigsaw puzzles or walking my dog.'}, 
+		'time doing jigsaw puzzles or walking my dog.'}, 
 	'jp': {heading: '俺について', 
 		description: '日本に２回行った：熊本と富山。熊本でアクシデントでぬいぐるみを集め始めた（最初に２つ' +
 		'をゲットして、みんなは俺が集まってると思っちゃった）。<br />' +

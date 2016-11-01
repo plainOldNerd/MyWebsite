@@ -25,10 +25,21 @@ var ThumbnailStyle = {
 	borderWidth: '1px'
 };
 
+var MainDisplayDivStyle = {
+	position: 'relative'
+};
+
 var MainDisplayStyle = {
 	borderRadius: '8px',
 	borderStyle: 'solid',
-	borderWidth: '1px'
+	borderWidth: '1px',
+	zIndex: '1'
+};
+
+var ClickMeStyle = {
+	verticalAlign: 'top',
+	position: 'relative',
+	zIndex: '2'
 };
 
 export {
@@ -37,5 +48,7 @@ export {
 	NameDisplayStyle,
 	NameStyle,
 	ThumbnailStyle,
-	MainDisplayStyle
+	MainDisplayDivStyle,
+	MainDisplayStyle,
+	ClickMeStyle
 };
