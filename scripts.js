@@ -7,6 +7,7 @@ var checkClickMePosition = function(){
 	// now we have AT LEAST one series picture
 
 	var clickMes = document.getElementsByClassName('clickMe');
+	var descriptions = document.getElementsByClassName('description');
 
 	// we have enough width
 	if(clickMes[0].getBoundingClientRect().right >
@@ -16,6 +17,8 @@ var checkClickMePosition = function(){
 			clickMes[i].style.top = '0px';
 			// started with 58px and found this value by trial and error
 			clickMes[i].style.right = '50px';
+
+			descriptions[i].style.top = '0px';
 		}
 	}
 	// we don't have enough width
@@ -32,6 +35,8 @@ var checkClickMePosition = function(){
 			clickMes[i].style.top = '-' + mainDisplayHeight +'px';
 			// started with 58px and found this value by trial and error
 			clickMes[i].style.right = '-' + mainDisplayWidth +'px';
+
+			descriptions[i].style.top = '-50px';
 		}
 	}
 }

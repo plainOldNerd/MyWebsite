@@ -1,6 +1,6 @@
 import React from 'react';
-import {ThumbnailStyle, MainDisplayDivStyle, MainDisplayStyle, ClickMeStyle} 
-	from './styles';
+import {ThumbnailStyle, MainDisplayDivStyle, MainDisplayStyle, ClickMeStyle,
+	DescriptionStyle} from './styles';
 
 /* takes props files, index, and handleClick. index is an integer 
    and specifies which thumbnail this is. handleClick is a callback so that 
@@ -67,6 +67,37 @@ var PhotoGallery = React.createClass({
 					handleClick={this.handleThumbnailClick}
 					key={this.props.files + '-' + i} />
 			);
+		}
+	},
+
+	imageLoaded(){
+		if(this.refs.clickMe && this.refs.description){
+			// we have enough width
+			if(this.refs.clickMe.getBoundingClientRect().right >
+				this.refs.mainDisplay.getBoundingClientRect().right){
+
+					this.refs.clickMe.style.top = '0px';
+					// started with 58px and found this value by trial and error
+					this.refs.clickMe.style.right = '50px';
+
+					this.refs.description.style.top = '0px';
+			}
+			// we don't have enough width
+			if(this.refs.clickMe.getBoundingClientRect().bottom >
+				this.refs.mainDisplay.getBoundingClientRect().bottom){
+
+					//  agin, trial and error
+					var mainDisplayHeight 
+						= this.refs.mainDisplay.getBoundingClientRect().height+4;
+					var mainDisplayWidth 
+						= this.refs.mainDisplay.getBoundingClientRect().width-50;
+
+					this.refs.clickMe.style.top = '-' + mainDisplayHeight +'px';
+					// started with 58px and found this value by trial and error
+					this.refs.clickMe.style.right = '-' + mainDisplayWidth +'px';
+
+					this.refs.description.style.top = '-50px';
+			}
 		}
 	},
 
@@ -146,19 +177,25 @@ var PhotoGallery = React.createClass({
 							<img src={'../photogalleries/' + this.props.files + '/' +
 									this.state.mainDisplay}
 								alt='some shit fucked up!' 
+								ref='mainDisplay'
+								onLoad={this.imageLoaded}
 								onClick={this.handleMainPhotoClick}
 								className='mainDisplayInSeries'
 								style={MainDisplayStyle} 
 							/> 
 							<img src='../photogalleries/clickme.gif' 
 								alt='some shit fucked up!'
+								ref='clickMe'
+								onLoad={this.imageLoaded}
 								onClick={this.handleMainPhotoClick}
 								className='clickMe'
 								style={ClickMeStyle}
 							/>
 							<br />
-							<span dangerouslySetInnerHTML=
-								{{__html: fileDescription}}>
+							<span ref='description'
+								className='description' 
+								style={DescriptionStyle}
+								dangerouslySetInnerHTML={{__html: fileDescription}}>
 							</span>
 						</div>
 					</div>

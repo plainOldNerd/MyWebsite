@@ -42,6 +42,10 @@ var ClickMeStyle = {
 	zIndex: '2'
 };
 
+var DescriptionStyle = {
+	position: 'relative'
+};
+
 export {
 	LangSelectorSpanStyle, 
 	SelectStyle,
@@ -50,5 +54,6 @@ export {
 	ThumbnailStyle,
 	MainDisplayDivStyle,
 	MainDisplayStyle,
-	ClickMeStyle
+	ClickMeStyle,
+	DescriptionStyle
 };
