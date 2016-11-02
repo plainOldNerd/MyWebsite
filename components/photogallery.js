@@ -72,13 +72,21 @@ var PhotoGallery = React.createClass({
 
 	imageLoaded(){
 		if(this.refs.clickMe && this.refs.description){
+			/* note that both mobile and pc versions are essentially the same
+			   file, but with different versions of scripts.js and styles.css 
+			   in their folders. this following code will work unless another
+			   css file is linked earlier or the css file is altered
+			*/
+			var clickMeStyle = document.styleSheets[1].cssRules[5].cssText;
+			var clickMeWidth = parseInt(clickMeStyle.match(/[\d]+/)[0]);
+
 			// we have enough width
 			if(this.refs.clickMe.getBoundingClientRect().right >
 				this.refs.mainDisplay.getBoundingClientRect().right){
 
 					this.refs.clickMe.style.top = '0px';
-					// started with 58px and found this value by trial and error
-					this.refs.clickMe.style.right = '50px';
+					this.refs.clickMe.style.right = clickMeWidth.toString() + 
+						'px';
 
 					this.refs.description.style.top = '0px';
 			}
@@ -86,17 +94,17 @@ var PhotoGallery = React.createClass({
 			if(this.refs.clickMe.getBoundingClientRect().bottom >
 				this.refs.mainDisplay.getBoundingClientRect().bottom){
 
-					//  agin, trial and error
 					var mainDisplayHeight 
 						= this.refs.mainDisplay.getBoundingClientRect().height+4;
 					var mainDisplayWidth 
-						= this.refs.mainDisplay.getBoundingClientRect().width-50;
+						= this.refs.mainDisplay.getBoundingClientRect().width
+							-clickMeWidth;
 
 					this.refs.clickMe.style.top = '-' + mainDisplayHeight +'px';
-					// started with 58px and found this value by trial and error
 					this.refs.clickMe.style.right = '-' + mainDisplayWidth +'px';
 
-					this.refs.description.style.top = '-50px';
+					this.refs.description.style.top = '-' + 
+						clickMeWidth.toString() + 'px';
 			}
 		}
 	},

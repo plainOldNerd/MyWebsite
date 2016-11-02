@@ -21,8 +21,7 @@ exports.info =
 			'en': 'In my early years at high school my nickname was ' +
 				'<a href="https://en.wikipedia.org/wiki/Weird_Science_(TV_series)" ' +
 				'target="_blank">"Weird Science"</a>.', 
-			'jp': 'クリックしてこの写真シリーズを見てごらん。<br /><br />' +
-				'中学校の時、俺のあだ名は' +
+			'jp': '中学校の時、俺のあだ名は' +
 				'<a href="https://en.wikipedia.org/wiki/Weird_Science_(TV_series)" ' +
 				'target="_blank">「Weird Science」（ときめきサイエンス）</a>だったの。'
 		},

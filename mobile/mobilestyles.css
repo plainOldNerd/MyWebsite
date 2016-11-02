@@ -1,3 +1,10 @@
+/* only for compatibility with pcstyles.css 
+   this is important for mywebsite/components/photogallery.js to have the
+   imageLoaded() method work correctly
+*/
+html {
+}
+
 .thumbnail {
 	width: 150px;
 	height: 150px;
