@@ -24,6 +24,8 @@ var Content = React.createClass({
 		this.state.cbRefs.push(this.whativelearnt);
 		this.state.cbRefs.push(this.acknowledgements);
 		this.state.cbRefs.push(this.aboutme);
+		this.state.cbRefs.push(this.mypets);
+		this.state.cbRefs.push(this.myjigsawpuzzles);
 	},
 
 	handleLangSelect(chosen){
@@ -54,6 +56,10 @@ var Content = React.createClass({
 						ref={(ref) => {this.acknowledgements = ref}} />
 					<Chunk files='aboutme' initiallyExpanded={true}
 						ref={(ref) => {this.aboutme = ref}} />
+					<Chunk files='mypets' initiallyExpanded={true}
+						ref={(ref) => {this.mypets = ref}} />
+					<Chunk files='myjigsawpuzzles' initiallyExpanded={false}
+						ref={(ref) => {this.myjigsawpuzzles = ref}} />
 
 					<p style={{visibility:'hidden'}}> lalala </p>
 				</div>

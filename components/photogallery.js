@@ -184,7 +184,7 @@ var PhotoGallery = React.createClass({
 
 							<img src={'../photogalleries/' + this.props.files + '/' +
 									this.state.mainDisplay}
-								alt='some shit fucked up!' 
+								alt='something went wrong!' 
 								ref='mainDisplay'
 								onLoad={this.imageLoaded}
 								onClick={this.handleMainPhotoClick}
@@ -192,7 +192,7 @@ var PhotoGallery = React.createClass({
 								style={MainDisplayStyle} 
 							/> 
 							<img src='../photogalleries/clickme.gif' 
-								alt='some shit fucked up!'
+								alt='something went wrong!'
 								ref='clickMe'
 								onLoad={this.imageLoaded}
 								onClick={this.handleMainPhotoClick}
@@ -219,7 +219,7 @@ var PhotoGallery = React.createClass({
 						<div className='maindisplayDiv'>
 							<img src={'../photogalleries/' + this.props.files + '/' +
 									this.state.mainDisplay}
-								alt='some shit fucked up!' 
+								alt='something went wrong!' 
 								className='mainDisplay'
 								style={MainDisplayStyle} 
 							/> <br />
@@ -239,8 +239,16 @@ var PhotoGallery = React.createClass({
 						{this.state.thumbnails}
 					</div>
 					<div className='maindisplayDiv'>
-						video goes here <br />
-						{fileDescription}
+						<video controls
+							className='mainDisplay' style={MainDisplayStyle}>
+							
+							<source src={'../photogalleries/' + this.props.files + '/' + 
+								this.state.mainDisplay} type='video/mp4' />
+							Sorry, but the video cannot be played.
+						</video> <br />
+						<span dangerouslySetInnerHTML=
+							{{__html: fileDescription}}>
+						</span>
 					</div>
 				</div>
 			);
