@@ -8,3 +8,7 @@ I decided to create a website mainly for these two reasons:
 This website was not built with extensibility or maintainability in mind (I built it as a static website with no server, which automatically limits the extensibility of it) but have made as extensible as possible. Due to the inherent interdependancies between the React components' CSS and native CSS of the page, some of which are different between PC and mobile versions and some of which are universal, maintainability has suffered a little here. This is not a huge concern as this is a static page.
 
 [Check it out.](https://d36n94k71zmcat.cloudfront.net/)
+
+## Now This Site is Nearly Completed
+
+While going through job advertisements it occurs to me it will be useful to teach myself some jQuery and Redux, and refector the code.
