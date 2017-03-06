@@ -91,11 +91,11 @@ exports.info =
 		}
 	  },
 '12': {
-	description: {
-		'en': 'Drill loved lying in the dirt!', 
-		'jp': 'Drillは土でよこになるの好きだった！'
-	  }
- },
+		description: {
+			'en': 'Drill loved lying in the dirt!', 
+			'jp': 'Drillは土でよこになるの好きだった！'
+	  	}
+ 	  },
 '13': {
 		description: {
 			'en': 'Chips', 
