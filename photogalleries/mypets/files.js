@@ -152,5 +152,14 @@ exports.info =
 				'strange behaviour, but cute.', 
 			'jp': 'Chipsは時々、走ってるみたいに前の足を動かせる。めっちゃ可笑しい行動やけど、可愛い。'
 		}
+	  },
+'20': {
+		description: {
+			'en': 'I\'m actually allergic to cats, and usually don\'t like them! ' +
+				'But Joanie (a friend\'s kitten) is such a lovely, friendly Brown ' +
+				'Burmese that I had to post her on here.', 
+			'jp': '実は猫にアレルギーがあって、ほとんど好きじゃない！やけど、Joanie（友達の子猫）は愛らしくて、' +
+				'フレンドリー過ぎて、ここに貼っちゃった。'
+		}
 	  }
 };
