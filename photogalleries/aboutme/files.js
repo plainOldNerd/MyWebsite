@@ -47,12 +47,5 @@ exports.info =
 			'en': 'High school photo. Damn I was a handsome man!', 
 			'jp': '高校の写真。超恰好良かった！'
 		}
-	 },
-'5': {
-		description: {
-			'en': 'Before coming home from Toyama, Japan, my friends gave me a ' +
-				'Tshirt that they had written on, and we all did karaoke.', 
-			'jp': '富山から帰る前に、友達がみんな何か書いてくれたTシャツをくれて、みんなでカラオケしたの。'
-		}
 	 }
 };
